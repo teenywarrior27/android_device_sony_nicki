@@ -71,6 +71,10 @@ on boot
     chmod 2770 /dev/socket/qmux_bluetooth
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
+    
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
 
     #Create PERFD deamon related dirs
     mkdir /data/misc/perfd 0755 root system
@@ -249,7 +253,7 @@ on property:bluetooth.hciattach=false
 service qmuxd /system/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth gps qcom_diag
+    group radio audio bluetooth gps diag
 
 service netmgrd /system/bin/netmgrd
     class main
@@ -366,7 +370,7 @@ service ril-daemon2 /system/bin/rild -c 2
     socket rild-debug2 stream 660 radio system
     user root
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
+    group radio cache inet misc audio sdcard_r sdcard_rw diag diag log
 
 service charger /sbin/healthd -c
     class charger

@@ -1,6 +1,5 @@
 /*
    Copyright (c) 2013, The Linux Foundation. All rights reserved.
-
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -13,7 +12,6 @@
     * Neither the name of The Linux Foundation nor the names of its
       contributors may be used to endorse or promote products derived
       from this software without specific prior written permission.
-
    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
@@ -34,8 +32,7 @@
 
 #include "vendor_init.h"
 #include "property_service.h"
-#include "log.h"
-#include "util.h"
+#include <android-base/properties.h>
 
 #define MODELNUMBER "/proc/modelnumber"
 #define BUF_SIZE         64
@@ -53,10 +50,7 @@ static int read_file2(const char *fname, char *data, int max_size)
         return 0;
 
     fd = open(fname, O_RDONLY);
-    if (fd < 0) {
-        ERROR("failed to open '%s'\n", fname);
-        return 0;
-    }
+
 
     rc = read(fd, data, max_size - 1);
     if ((rc > 0) && (rc < max_size))
@@ -104,6 +98,6 @@ void vendor_load_properties()
         property_set("ro.build.fingerprint", "Sony/C2004/C2004:4.3/15.5.A.1.5/eng.user.20140430.172301:user/release-keys");
     };
 
-    device = property_get("ro.product.device");
-    ERROR("setting build properties for %s device\n", device.c_str());
+    device = android::base::GetProperty("ro.product.device","");
+  
 }

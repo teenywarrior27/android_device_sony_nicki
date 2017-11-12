@@ -32,6 +32,7 @@
 #include <hardware/camera.h>
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
+#include <sensor/SensorManager.h>
 
 static char KEY_SUPPORTED_ISO_MODES[] = "iso-values";
 static char KEY_ISO_MODE[] = "iso";

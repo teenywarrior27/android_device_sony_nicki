@@ -16,6 +16,8 @@
 
 # Board device path
 DEVICE_PATH := device/sony/nicki
+ANDROID_COMPILE_WITH_JACK := false
+BOARD_KERNEL_IMAGE_NAME:=zImage
 
 # Board device headers
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include

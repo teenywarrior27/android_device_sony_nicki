@@ -11,6 +11,11 @@ PRODUCT_PACKAGES += \
     Nfc \
     Tag
 
+# NFC HIDL interfaces
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0-impl
+
+
 # NFC FW
 PRODUCT_PACKAGES += \
     libpn544_fw
