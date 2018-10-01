@@ -747,3 +747,6 @@ static int camera_get_camera_info(int camera_id, struct camera_info *info)
         return 0;
     return gVendorModule->get_camera_info(camera_id, info);
 }
+
+
+//cool
