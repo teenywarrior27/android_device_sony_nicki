@@ -26,3 +26,4 @@ include $(DEVICE_PATH)/board/*.mk
 
 # Board device vendor
 -include vendor/sony/nicki/BoardConfigVendor.mk
+#someshit
